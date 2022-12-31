@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/imagesListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.johnyalam.dragger2dependency.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/imagesListFragment"
+        android:name="dev.ronnie.imageloaderdagger2.presentation.fragments.ImagesListFragment"
+        android:label="ImagesListFragment">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/to_singleImageFragment"
+            app:destination="@id/singleImageFragment" />
+        <action
+            android:id="@+id/to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.johnyalam.dragger2dependency.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/singleImageFragment"
+        android:name="dev.ronnie.imageloaderdagger2.presentation.fragments.SingleImageFragment"
+        android:label="SingleImageFragment">
 
+        <argument
+            android:name="image"
+            app:argType="dev.ronnie.imageloaderdagger2.data.model.ImagesResponse"
+            app:nullable="false" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="dev.ronnie.imageloaderdagger2.presentation.fragments.SearchFragment"
+        android:label="SearchFragment">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/to_singleImageFragment"
+            app:destination="@id/singleImageFragment" />
+
     </fragment>
 </navigation>
